@@ -14,7 +14,11 @@ const Header = (props) => {
                     shopping_cart
                 </span>
                 </Link>
-                <span>{props.cartItems.length}</span>    
+                    if(props.cartItems === null){
+                        <span>0</span>
+                    } else {
+                        <span>{props.cartItems.length}</span>
+                    }    
             </div>
             </div>
             </div>

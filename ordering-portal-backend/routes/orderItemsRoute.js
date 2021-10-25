@@ -13,9 +13,11 @@ router.post('/addorders', async function(req, res) {
 });
 router.get('/getallorders', async function(req, res) {
     try {
-        const orderItemRecord = await  orderItemsModel.find({}, { __v: 0 });
+        const orderItemRecord = await orderItemsModel.find({
+            subItemsData : req.body.subItemsData
+        }, { __v: 0 });
         console.log("orderItemRecord", orderItemRecord);
-        res.send({ result: "Item found successfully" });
+        res.send({ result: orderItemRecord });
     } catch(e) {
         console.log("Error", e);
     }
@@ -30,4 +32,4 @@ router.delete('/deleteall', async function(req, res){
     }
 });
 
-module.exports = router;
+// module.exports = router;

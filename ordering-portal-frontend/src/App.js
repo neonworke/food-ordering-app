@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {
   const [cartItems, updateCart] = useState([]);
-  const [foodItemsList, updateFoodItemsList] = useState([]);
+  const [foodItemsList, updateFoodItemsList] = useState([]); 
   function fetchAllOrders() {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/orderItems/getallorders`)
@@ -26,9 +26,9 @@ function App() {
     fetchAllOrders();
   }, []);
 
-  function handleAddToCart(item) {
+  async  function handleAddToCart(item) {
     updateCart((cartItems) => [...cartItems, item]);
-    axios
+    await axios
       .post(`${process.env.REACT_APP_SERVER_URL}/orderItems/addorders`, item)
       .then(function (response) {
         console.log(response);
@@ -68,8 +68,9 @@ function App() {
   }
   return (
     <div className="App">
+      
       <Router>
-        <Header cartItems={cartItems} />
+      <Header cartItems={cartItems} />
         <Route
           path="/"
           exact
