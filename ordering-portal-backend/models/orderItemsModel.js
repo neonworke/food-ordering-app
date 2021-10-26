@@ -17,5 +17,5 @@ const orderItemsSchema = new mongoose.Schema({
     { collection: "orderItemsCollection" }
 );
 
-const model2 = mongoose.model('foodItemsModel', orderItemsSchema);
-module.exports = model2;
+const model = mongoose.model('orderItemsCollection', orderItemsSchema);
+module.exports = model;

@@ -26,9 +26,9 @@ function App() {
     fetchAllOrders();
   }, []);
 
-  async  function handleAddToCart(item) {
+  function handleAddToCart(item) {
     updateCart((cartItems) => [...cartItems, item]);
-    await axios
+     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/orderItems/addorders`, item)
       .then(function (response) {
         console.log(response);
