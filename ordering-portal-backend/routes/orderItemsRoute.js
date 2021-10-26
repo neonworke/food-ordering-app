@@ -5,7 +5,7 @@ const orderItemsModel = require("../models/orderItemsModel");
 router.post('/addorders', async function(req, res) {
     try {
         const orderadditionResponse = await orderItemsModel.create(req.body);
-        console.log("additionResponse", orderadditionResponse);
+        console.log("orderadditionResponse", orderadditionResponse);
         res.send({ results: "item added successfully" });
     } catch (e) {
         console.log("error occured in adding item", e);
@@ -14,7 +14,7 @@ router.post('/addorders', async function(req, res) {
 router.get('/getallorders', async function(req, res) {
     try {
         const orderItemRecord = await orderItemsModel.find({
-            subItemsData : req.body.subItemsData
+            subItems : req.body.subItemsData.subItems
         }, { __v: 0 });
         console.log("orderItemRecord", orderItemRecord);
         res.send({ result: orderItemRecord });
@@ -23,9 +23,18 @@ router.get('/getallorders', async function(req, res) {
     }
 });
 
-router.delete('/deleteall', async function(req, res){
+router.delete('/deleteone', async function(req, res){
     try {
         await orderItemsModel.deleteOne({id: req.body.id});
+        res.send( {result: "All items deleted" });
+    } catch(e) {
+        console.log("Error in deleting all item", e);
+    }
+});
+
+router.delete('/deleteall', async function(req, res){
+    try {
+        await orderItemsModel.deleteMany({id: req.body.id});
         res.send( {result: "All items deleted" });
     } catch(e) {
         console.log("Error in deleting all item", e);

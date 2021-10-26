@@ -42,7 +42,19 @@ function App() {
     const newItem = cartItems.filter(i => {
       return i !== item;
     });
-    updateCart([...newItem]);
+    updateCart(newItem);
+    axios
+      .delete(`${process.env.REACT_APP_SERVER_URL}/orderItems/deleteone`, {
+        data: {
+          id: item.id,
+        },
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   function handleRemoveFromCart(itemToBeRemoved) {
