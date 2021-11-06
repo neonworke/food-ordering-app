@@ -1,13 +1,15 @@
 const mongoose = require('mongoose');
 const orderItemsSchema = new mongoose.Schema({
-    subItemsData: {
     name: String,
-    subItems: [
-        {
-            name : String,
-            image: String,
-            price: Number,
-            description: String,
+    image: String,
+    subItemsData: {
+        name: String,
+        subItems: [
+            {
+                name : String,
+                image: String,
+                price: Number,
+                description: String,
         },
     ]
 }

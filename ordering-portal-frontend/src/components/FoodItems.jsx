@@ -13,7 +13,7 @@ export default function FoodItems({foodItemsList, updateFoodItemsList}) {
       }
     }
     getFoodItems();
-  }, [updateFoodItemsList]);
+  }, []);
 
   function renderFoodItems() {
     console.log("foodItemsList", foodItemsList);

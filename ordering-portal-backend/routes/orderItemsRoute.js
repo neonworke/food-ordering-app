@@ -5,7 +5,7 @@ const orderItemsModel = require("../models/orderItemsModel");
 router.post('/addorders', async function(req, res) {
     try {
         const orderadditionResponse = await orderItemsModel.create(req.body);
-        console.log("orderadditionResponse", orderadditionResponse);
+        // console.log("orderadditionResponse", orderadditionResponse);
         res.send({ results: "item added successfully" });
     } catch (e) {
         console.log("error occured in adding item", e);
